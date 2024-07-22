@@ -15,9 +15,28 @@ namespace test.MainFeedBack
             if (!IsPostBack)
             {
                 BindFeedbackData(1);
+                //Entity obj = new Entity();
+                //int feedbackID = obj.FeedbackID;
+                //hdnFeedbackID.Value = feedbackID.ToString();
             }
         }
 
+        //[WebMethod]
+        //public static void UpdateFeedback(int feedbackID, string customerName, string email, string comment, int rating, string submittedDate)
+        //{
+        //    try
+        //    {
+        //        DateTime submittedDateTime = DateTime.Parse(submittedDate);
+        //        BAL bal = new BAL();
+        //        bal.UpdateFeedback(feedbackID, customerName, email, comment, rating, submittedDateTime);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Error updating feedback: " + ex.Message);
+        //    }
+        //}
+
+        
         protected void btnSubmitted_Click(object sender, EventArgs e)
         {
             if(Page.IsValid){ 
@@ -101,7 +120,6 @@ namespace test.MainFeedBack
                 btnUpdate.Visible = false;
             }
         }
-
         private void ClearFormFields()
         {
             txtCustomerName.Text = "";
