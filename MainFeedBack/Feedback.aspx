@@ -92,6 +92,44 @@
 
             return isValid;
         }
+        $(document).ready(function () {
+            $('#btnUpdate').click(function () {
+                updateFeedback();
+            });
+
+            function updateFeedback() {
+                alert("updateFeedback");
+                var feedbackID = $('#hdnFeedbackID').val();
+                var customerName = $('#txtCustomerName').val();
+                var email = $('#txtEmail').val();
+                var comment = $('#txtComment').val();
+                var rating = $('#txtRating').val();
+                var submittedDate = $('#txtSubmittedDate').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'Feedback.aspx/UpdateFeedback', 
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({
+                        feedbackID: feedbackID,
+                        customerName: customerName,
+                        email: email,
+                        comment: comment,
+                        rating: rating,
+                        submittedDate: submittedDate
+                    }),
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response.d);
+                        alert('Feedback updated successfully.');
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        alert('Error updating feedback.');
+                    }
+                });
+            }
+        });
     </script>
     <style>
         .grid-container {
